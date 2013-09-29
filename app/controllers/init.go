@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"github.com/hermanschaaf/revmgo"
+	"github.com/toshipon/revmgo"
 	"github.com/robfig/revel"
 )
 
