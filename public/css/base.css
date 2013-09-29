@@ -1,7 +1,7 @@
 body {
     margin: 0px;
     margin-bottom: 40px;
-    background: url(https://dl-web.dropbox.com/get/Public/hp/ironzebra/background.jpg?w=AADvRoAAD_elc0-IUaIm_AgyFCpUoHtkbFGWsF5vSMmv4w);
+    background: url(https://dl.dropboxusercontent.com/u/406797/hp/ironzebra/background.jpg);
     background-size: 100%;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -53,6 +53,7 @@ ul, li {
     margin-top: 20px;
 }
 .contents {
+    margin-top: 16px;
     background-color: rgba(255, 255, 255, .3);
     padding: 20px;
 }
