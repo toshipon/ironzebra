@@ -218,33 +218,85 @@ func (_ tAdmin) AddImages(
 }
 
 
-type tTestRunner struct {}
-var TestRunner tTestRunner
+type tApp struct {}
+var App tApp
 
 
-func (_ tTestRunner) Index(
+func (_ tApp) Index(
 		) string {
 	args := make(map[string]string)
 	
-	return revel.MainRouter.Reverse("TestRunner.Index", args).Url
+	return revel.MainRouter.Reverse("App.Index", args).Url
 }
 
-func (_ tTestRunner) Run(
-		suite string,
-		test string,
+func (_ tApp) Login(
 		) string {
 	args := make(map[string]string)
 	
-	revel.Unbind(args, "suite", suite)
-	revel.Unbind(args, "test", test)
-	return revel.MainRouter.Reverse("TestRunner.Run", args).Url
+	return revel.MainRouter.Reverse("App.Login", args).Url
 }
 
-func (_ tTestRunner) List(
+func (_ tApp) LoginPost(
+		username string,
+		password string,
 		) string {
 	args := make(map[string]string)
 	
-	return revel.MainRouter.Reverse("TestRunner.List", args).Url
+	revel.Unbind(args, "username", username)
+	revel.Unbind(args, "password", password)
+	return revel.MainRouter.Reverse("App.LoginPost", args).Url
+}
+
+
+type tBlog struct {}
+var Blog tBlog
+
+
+func (_ tBlog) List(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Blog.List", args).Url
+}
+
+func (_ tBlog) ListAll(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Blog.ListAll", args).Url
+}
+
+func (_ tBlog) ListCategory(
+		category string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "category", category)
+	return revel.MainRouter.Reverse("Blog.ListCategory", args).Url
+}
+
+func (_ tBlog) Show(
+		category string,
+		id int,
+		slugString string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "category", category)
+	revel.Unbind(args, "id", id)
+	revel.Unbind(args, "slugString", slugString)
+	return revel.MainRouter.Reverse("Blog.Show", args).Url
+}
+
+func (_ tBlog) RedirectToSlug(
+		category string,
+		id int,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "category", category)
+	revel.Unbind(args, "id", id)
+	return revel.MainRouter.Reverse("Blog.RedirectToSlug", args).Url
 }
 
 
