@@ -12,8 +12,8 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"github.com/hermanschaaf/ironzebra/app/management"
-	"github.com/hermanschaaf/revmgo"
+	"github.com/toshipon/ironzebra/app/management"
+	"github.com/toshipon/revmgo"
 	"github.com/robfig/revel"
 	"os"
 	"strings"
