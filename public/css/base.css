@@ -1,5 +1,10 @@
 body {
+    margin: 0px;
     margin-bottom: 40px;
+    background: url(https://dl-web.dropbox.com/get/Public/hp/ironzebra/background.jpg?w=AADvRoAAD_elc0-IUaIm_AgyFCpUoHtkbFGWsF5vSMmv4w);
+    background-size: 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 h1 {
     font-family: "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
@@ -46,6 +51,10 @@ ul, li {
 .sidebar-menu {
     list-style-type: none;
     margin-top: 20px;
+}
+.contents {
+    background-color: rgba(255, 255, 255, .3);
+    padding: 20px;
 }
 .rss-link img {
     margin-top: -2px;
