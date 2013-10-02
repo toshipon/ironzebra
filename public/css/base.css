@@ -1,15 +1,25 @@
 body {
-    margin: 0px;
     margin-bottom: 40px;
-    background: url(https://dl.dropboxusercontent.com/u/406797/hp/ironzebra/background.jpg);
-    background-size: 100%;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+}
+@media (min-width: 770) {
+    body {
+        margin: 0px;
+        margin-bottom: 40px;
+        background: url(https://dl.dropboxusercontent.com/u/406797/hp/ironzebra/background.jpg);
+        background-size: 100%;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
 }
 h1 {
     font-family: "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     font-size: 36px;
     line-height: 1;
+}
+@media (max-width: 600px) {
+    h1 {
+        font-size: 27px;
+    }
 }
 h2 {
     font-family: Georgia,Cambria,"Times New Roman",Times,serif;
