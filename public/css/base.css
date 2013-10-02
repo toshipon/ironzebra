@@ -1,7 +1,7 @@
 body {
     margin-bottom: 40px;
 }
-@media (min-width: 770) {
+@media (min-width: 770px) {
     body {
         margin: 0px;
         margin-bottom: 40px;
