@@ -10,9 +10,9 @@
     <div class="container">
         <div class="row-fluid page">
             <div class="span2 offset1 sidebar">
-                <a href="/"><img class='sidebar-image' alt="IronZebra - Web Application Developer from Cape Town, South Africa" src="/public/images/toshipon.jpg"></a>
+                <a href="/"><img class='sidebar-image' alt="Toshipon - Web Application Developer" src="/public/images/toshipon.jpg"></a>
                 <div class="author">
-                    <a class="name" href="/">Herman Schaaf</a>
+                    <a class="name" href="/">Toshiaki Takahashi</a>
                     <time datetime="2013-11-13">{{formatDate .result.Timestamp }}</time>
                 </div>
                 <div class="tags">
@@ -36,6 +36,6 @@
                 </div>
                 {{end}}
             </div>
-            <div class="span6">
+            <div class="span6 contents">
                 <h1 class="title">{{if .result.Title}}{{ .result.Title}}{{else}}IronZebra{{end}}</h1>
                 {{if .result.Subtitle}}<h2 class="subtitle">{{.result.Subtitle}}</h2>{{end}}
