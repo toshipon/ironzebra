@@ -18,7 +18,11 @@ h1 {
 }
 @media (max-width: 600px) {
     h1 {
-        font-size: 27px;
+        font-size: 24px;
+        margin-bottom: 24px;
+    }
+    h1, h2 {
+        text-align: center;
     }
 }
 h2 {
@@ -43,7 +47,7 @@ code, pre {
     font-size: 14px;
 }
 ul, li {
-    font-size: 18px; 
+    font-size: 18px;
     line-height: 1.4em;
 }
 .page {
@@ -130,9 +134,9 @@ ul, li {
     margin-top: 20px;
 }
 .fork-image {
-    position: absolute; 
-    top: 0; 
-    right: 0; 
+    position: absolute;
+    top: 0;
+    right: 0;
     border: 0;
     background: transparent url(/public/images/gopher.png) no-repeat top right;
 }
