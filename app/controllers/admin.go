@@ -51,12 +51,18 @@ func addPost(database *mgo.Database, collection *mgo.Collection, title, subtitle
 	return result
 }
 
-func savePost(collection *mgo.Collection, shortID int, title, subtitle, slugString, category, body string) (post models.Post) {
+func savePost(collection *mgo.Collection, shortID int, title, subtitle, timestamp, slugString, category, body string) (post models.Post) {
+
+	t, err := time.Parse("2006-01-02 15:04:05 -0700 MST", timestamp)
+    if err != nil {
+        panic(err)
+    }
 	// Update Dataz
-	err := collection.Update(bson.M{"shortid": shortID}, bson.M{
+	err = collection.Update(bson.M{"shortid": shortID}, bson.M{
 		"$set": bson.M{
 			"title":    title,
 			"subtitle": subtitle,
+			"timestamp": t,
 			"category": category,
 			"slug":     slugString,
 			"body":     body,
@@ -121,31 +127,38 @@ func (c Admin) New() revel.Result {
 	iter := collection.Find(nil).Sort("name").Iter()
 	iter.All(&categoryList)
 	newPost := true
-	return c.Render(categoryList, newPost)
+	result := models.Post{}
+	result.Timestamp = time.Now()
+	return c.Render(result, categoryList, newPost)
 }
 
-func validatePost(c Admin, title, body, slugString, category string) {
+func validatePost(c Admin, title, timestamp, body, slugString, category string) {
 	c.Validation.Required(title).Message("A title is required")
+	c.Validation.Required(timestamp).Message("You need a Submission Date")
+	c.Validation.Required(category).Message("You need to choose a category")
 	c.Validation.Required(body).Message("You probably want some text in your post, no?")
 	c.Validation.Required(slugString).Message("You need a slug...")
 	c.Validation.Required(category).Message("You need to choose a category")
 }
 
-func (c Admin) SaveNew(title, subtitle, category, body string) revel.Result {
+func (c Admin) SaveNew(title, subtitle, timestamp, category, body string) revel.Result {
 	slugString := slug.Make(title)
-	validatePost(c, title, body, slugString, category)
+	if timestamp == "" {
+		timestamp = time.Now().String()
+	}
+	validatePost(c, title, timestamp, body, slugString, category)
 	collection := c.Database.C("posts")
 	result := addPost(c.Database, collection, title, subtitle, slugString, category, body)
 	return c.Redirect(routes.Blog.Show(result.Category, result.ShortID, result.Slug))
 }
 
-func (c Admin) Save(id int, title, subtitle, slugString, category, body, publish string) revel.Result {
-	validatePost(c, title, body, slugString, category)
+func (c Admin) Save(id int, title, subtitle, timestamp, slugString, category, body, publish string) revel.Result {
+	validatePost(c, title, timestamp, body, slugString, category)
 	collection := c.Database.C("posts")
 	if slugString == "" {
 		slugString = slug.Make(title)
 	}
-	result := savePost(collection, id, title, subtitle, slugString, category, body)
+	result := savePost(collection, id, title, subtitle, timestamp, slugString, category, body)
 	return c.Redirect(routes.Blog.Show(result.Category, result.ShortID, result.Slug))
 }
 

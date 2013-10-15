@@ -43,6 +43,7 @@ func (_ tAdmin) New(
 func (_ tAdmin) SaveNew(
 		title string,
 		subtitle string,
+		timestamp string,
 		category string,
 		body string,
 		) string {
@@ -50,6 +51,7 @@ func (_ tAdmin) SaveNew(
 	
 	revel.Unbind(args, "title", title)
 	revel.Unbind(args, "subtitle", subtitle)
+	revel.Unbind(args, "timestamp", timestamp)
 	revel.Unbind(args, "category", category)
 	revel.Unbind(args, "body", body)
 	return revel.MainRouter.Reverse("Admin.SaveNew", args).Url
@@ -59,6 +61,7 @@ func (_ tAdmin) Save(
 		id int,
 		title string,
 		subtitle string,
+		timestamp string,
 		slugString string,
 		category string,
 		body string,
@@ -69,6 +72,7 @@ func (_ tAdmin) Save(
 	revel.Unbind(args, "id", id)
 	revel.Unbind(args, "title", title)
 	revel.Unbind(args, "subtitle", subtitle)
+	revel.Unbind(args, "timestamp", timestamp)
 	revel.Unbind(args, "slugString", slugString)
 	revel.Unbind(args, "category", category)
 	revel.Unbind(args, "body", body)
